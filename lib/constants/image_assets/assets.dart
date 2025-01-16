@@ -19,6 +19,8 @@ class Assets{
   static const String messagesIcon = "assets/images/message_icon.svg";
   static const String cameraIcon = "assets/images/camera_icon.svg";
 
+  static const String wave = "assets/images/waves.png";
+
 
 
 

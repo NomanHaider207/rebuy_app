@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rebuy/components/custom_navbar.dart';
 
 import '../../../../../constants/image_assets/assets.dart';
+import '../../../../../constants/routes/routes.dart';
 import '../components/list_builder.dart';
 import '../components/profile_header.dart';
 import '../components/section_header.dart';
@@ -47,7 +48,7 @@ class _HomeState extends State<Home> {
                 username: 'Hey Haider',
                 welcomeText: 'Welcome Back!',
                 onHamburgerTap: () {
-                  // Handle hamburger tap
+                  Navigator.pushReplacementNamed(context,Routes.sideBar);
                 },
               ),
               const SizedBox(height: 25),
