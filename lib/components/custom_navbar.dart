@@ -26,9 +26,9 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
       children: [
         // Main navigation bar container
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(15.0),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(40.0), // Navbar rounded corners
+            borderRadius: BorderRadius.circular(38.0), // Navbar rounded corners
             child: Container(
               color: const Color(0xFF3C3C3C), // Navbar background color
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -109,7 +109,7 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
           svgPaths[index],
           color: isSelected ? Colors.white : Colors.grey,
           width: 20, // SVG icon size
-          height: 20, // SVG icon size
+          height: 22, // SVG icon size
         ),
       ),
     );
