@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rebuy/constants/routes.dart';
 
 
 class SubmitButton extends StatelessWidget {
@@ -10,7 +11,7 @@ class SubmitButton extends StatelessWidget {
 Widget build(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      // Implement your login logic here
+      Navigator.pushReplacementNamed(context, Routes.home);
     },
     child: Container(
       width: double.infinity,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../constants/image_assets/assets.dart';
+import '../../../../../constants/assets.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String imageUrl;
@@ -26,13 +26,13 @@ class ProfileHeader extends StatelessWidget {
           radius: 45,
           backgroundImage: NetworkImage(imageUrl),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              width: 210.0,
+              width: 200.0,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -42,6 +42,7 @@ class ProfileHeader extends StatelessWidget {
                     style: GoogleFonts.firaSans(
                       fontSize: 32.0,
                       fontWeight: FontWeight.w700,
+                      color: Color(0xFFFF5A5F),
                     ),
                     overflow: TextOverflow.ellipsis,  // Adds the ellipsis (...) when the text overflows
                     maxLines: 1,
@@ -49,9 +50,9 @@ class ProfileHeader extends StatelessWidget {
                   Text(
                     welcomeText,
                     style: GoogleFonts.firaSans(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xFFFF5A5F),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
+                      color: const Color(0xFF979797),
                     ),
                   ),
                 ],
@@ -60,10 +61,9 @@ class ProfileHeader extends StatelessWidget {
             SizedBox(width: 25.0,),
             GestureDetector(
               onTap: onHamburgerTap,
-              child: SvgPicture.asset(
-                Assets.hamburger,
-                width: 33.0,
-                height: 33.0,
+              child: Icon(
+                (Icons.close),
+                  size: 40.0,
               ),
             ),
           ],

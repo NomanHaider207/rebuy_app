@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rebuy/constants/routes/routes.dart';
+import 'package:rebuy/constants/routes.dart';
 import 'package:rebuy/features/splash_screen/component/splash_screen_content.dart';
 
 class SplashScreen extends StatefulWidget {

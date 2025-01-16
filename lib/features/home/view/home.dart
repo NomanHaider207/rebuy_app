@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rebuy/components/custom_navbar.dart';
 
-import '../../../../../constants/image_assets/assets.dart';
-import '../../../../../constants/routes/routes.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/routes.dart';
 import '../components/list_builder.dart';
 import '../components/profile_header.dart';
 import '../components/section_header.dart';

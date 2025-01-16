@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../constants/image_assets/assets.dart';
+import '../constants/assets.dart';
 
 class CustomNavBarWithSvg extends StatefulWidget {
   @override
