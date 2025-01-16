@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:rebuy/components/custom_navbar.dart';
-import 'package:rebuy/features/auth/presentation/home/components/product_card.dart';
 
 import '../../../../../constants/image_assets/assets.dart';
+import '../components/list_builder.dart';
 import '../components/profile_header.dart';
 import '../components/section_header.dart';
-import '../components/profile_header.dart';
 import '../components/search_bar.dart';
 
 class Home extends StatefulWidget {
@@ -33,7 +31,6 @@ class _HomeState extends State<Home> {
       'price': '\$150',
       'isFavorite': false,
     },
-    // Add more products as required
   ];
 
   @override
@@ -64,28 +61,7 @@ class _HomeState extends State<Home> {
                 },
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                height: 268.0,  // Set the height for the horizontal list
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: products.length,
-                  padding: EdgeInsets.zero, // Remove padding from the ListView itself.
-                  itemBuilder: (context, index) {
-                    final product = products[index];
-                    return Container(
-                      margin: const EdgeInsets.only(right: 10.0), // Adds 10.0 spacing between items.
-                      color: Colors.transparent, // Set background color to transparent.
-                      child: ProductCard(
-                        imageUrl: product['imageUrl'],
-                        title: product['title'],
-                        subtitle: product['subtitle'],
-                        price: product['price'],
-                        isFavorite: product['isFavorite'],
-                      ),
-                    );
-                  },
-                ),
-              ),
+              ProductListView(products: products),
               SizedBox(height: 20.0),
               SectionHeader(
                 title: "Recently View",
@@ -95,28 +71,7 @@ class _HomeState extends State<Home> {
                 },
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                height: 268.0,  // Set the height for the horizontal list
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: products.length,
-                  padding: EdgeInsets.zero, // Remove padding from the ListView itself.
-                  itemBuilder: (context, index) {
-                    final product = products[index];
-                    return Container(
-                      margin: const EdgeInsets.only(right: 10.0), // Adds 10.0 spacing between items.
-                      color: Colors.transparent, // Set background color to transparent.
-                      child: ProductCard(
-                        imageUrl: product['imageUrl'],
-                        title: product['title'],
-                        subtitle: product['subtitle'],
-                        price: product['price'],
-                        isFavorite: product['isFavorite'],
-                      ),
-                    );
-                  },
-                ),
-              ),
+              ProductListView(products: products),
             ],
           ),
         ),

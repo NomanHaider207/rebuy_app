@@ -53,7 +53,7 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
 
         // Middle button
         Positioned.fill(
-          top: 16,
+          top: 20,
           // Moves the button up
           child: Align(
             alignment: Alignment.topCenter,
