@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rebuy/constants/routes/routes.dart';
+import 'package:rebuy/constants/routes.dart';
 
 import '../../../../../components/divider.dart';
 import '../../../../../components/footer_section.dart';
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 30.0),
             SubmitButton(buttonText: 'Login'),
             SizedBox(height: 20.0),
-            FooterSection(descriptionText: "Don't have an acccount?", buttonText: " SignUp", route: Routes.home,),
+            FooterSection(descriptionText: "Don't have an acccount?", buttonText: " SignUp", route: Routes.signUp,),
           ],
         ),
       ),

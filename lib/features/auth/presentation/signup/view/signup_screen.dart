@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rebuy/constants/routes/routes.dart';
+import 'package:rebuy/constants/routes.dart';
 import '../../../../../components/divider.dart';
 import '../../../../../components/footer_section.dart';
 import '../../../../../components/form_fields.dart';

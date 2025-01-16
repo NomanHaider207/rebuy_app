@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rebuy/features/auth/presentation/home/components/product_card.dart';
+import 'package:rebuy/features/home/components/product_card.dart';
 
 class ProductListView extends StatelessWidget {
   final List<Map<String, dynamic>> products;

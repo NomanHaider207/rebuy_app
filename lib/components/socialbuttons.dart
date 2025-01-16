@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rebuy/constants/image_assets/assets.dart';
+import 'package:rebuy/constants/assets.dart';
 
 class SocialLoginButtons extends StatelessWidget {
   @override
