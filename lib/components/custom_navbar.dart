@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../constants/assets.dart';
+import '../constants/routes.dart'; // Import routes file
 
 class CustomNavBarWithSvg extends StatefulWidget {
   @override
@@ -19,10 +19,18 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
     Assets.messagesIcon,
   ];
 
+  final List<String> routes = [
+    Routes.home,       // Home Screen route
+    Routes.myListing,
+    Routes.cameraScreen,
+    Routes.likedItems,
+    Routes.chatScreen,// Discover/Explore screen route
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Stack(
-      clipBehavior: Clip.none, // Allows the center button to overflow
+      clipBehavior: Clip.none,
       children: [
         // Main navigation bar container
         Padding(
@@ -35,13 +43,10 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  // Left items
                   ...List.generate(2, (index) {
                     return _buildNavBarItem(index);
                   }),
-                  // Placeholder for middle button
                   const SizedBox(width: 66),
-                  // Right items
                   ...List.generate(2, (index) {
                     return _buildNavBarItem(index + 3);
                   }),
@@ -54,14 +59,14 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
         // Middle button
         Positioned.fill(
           top: 20,
-          // Moves the button up
           child: Align(
             alignment: Alignment.topCenter,
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  currentIndex = 2; // The camera icon is at index 2
+                  currentIndex = 2;
                 });
+                Navigator.pushNamed(context, routes[2]);
               },
               child: Container(
                 width: 48,
@@ -75,7 +80,7 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
                   padding: EdgeInsets.only(top: 6.0),
                   child: SvgPicture.asset(
                     svgPaths[2],
-                    color: Color(0xFF3C3C3C),
+                    color: const Color(0xFF3C3C3C),
                   ),
                 ),
               ),
@@ -95,21 +100,22 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
         setState(() {
           currentIndex = index;
         });
+        Navigator.pushNamed(context, routes[index]); // Navigate to route
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        width: isSelected ? 66 : 30, // Ellipse size (selected/unselected)
+        width: isSelected ? 66 : 30,
         height: isSelected ? 41 : 30,
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF087E8B) : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
         ),
-        alignment: Alignment.center, // Center the content
+        alignment: Alignment.center,
         child: SvgPicture.asset(
           svgPaths[index],
           color: isSelected ? Colors.white : Colors.grey,
-          width: 20, // SVG icon size
-          height: 22, // SVG icon size
+          width: 20,
+          height: 22,
         ),
       ),
     );

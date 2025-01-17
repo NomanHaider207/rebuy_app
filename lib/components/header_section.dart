@@ -15,7 +15,6 @@ class HeaderSection extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            // If route is provided, navigate to it; otherwise, do nothing
             if (route != null) {
               Navigator.pushReplacementNamed(context, route!);
             }

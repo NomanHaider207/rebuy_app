@@ -22,7 +22,7 @@ class AccountDetailsContainer extends StatelessWidget {
         Navigator.pushNamed(context, route);  // Use Navigator to push the route
       },
       child: Container(
-        width: 350,
+        width: double.infinity,
         height: 93.0,
         decoration: BoxDecoration(
           color: Color(0xFFD4E4E6),

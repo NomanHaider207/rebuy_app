@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants/assets.dart';
-import '../components/accountdetailslist.dart';
+import '../../../constants/routes.dart';
+import '../components/conatinerforfields.dart';
 import '../components/sidebarheadersection.dart';
 import '../components/actionbuttons.dart';
 
@@ -13,29 +14,6 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
-  final List<Map<String, dynamic>> accountDetails = [
-    {
-      'icon': Icons.account_circle,
-      'title': 'My Account',
-      'subtitle': 'Edit your details, account settings',
-    },
-    {
-      'icon': Icons.shopping_cart,
-      'title': 'My Orders',
-      'subtitle': 'View all your orders',
-    },
-    {
-      'icon': Icons.list,
-      'title': 'My Listings',
-      'subtitle': 'View your products listing for sales',
-    },
-    {
-      'icon': Icons.favorite_border,
-      'title': 'Liked Items',
-      'subtitle': 'See the products you have wishlisted',
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,9 +34,51 @@ class _SideBarState extends State<SideBar> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 HeaderSection(),
-                SizedBox(height: 50.0),
-                AccountDetailsList(accountDetails: accountDetails),
-                SizedBox(height: 30.0),
+                SizedBox(height: 60.0),
+                AccountDetailsContainer(
+                  icon: Icon(
+                    Icons.account_circle,
+                    size: 40,
+                    color: Color(0xFF5F5F5F),
+                  ),
+                  title: 'My Account',
+                  subtitle: 'Edit your details, account settings',
+                  route: Routes.myAccount,
+                ),
+                SizedBox(height: 20.0),
+                AccountDetailsContainer(
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    size: 40,
+                    color: Color(0xFF5F5F5F),
+                  ),
+                  title: 'My Orders',
+                  subtitle: 'View all your orders',
+                  route: Routes.myOrders,
+                ),
+                SizedBox(height: 20.0),
+                AccountDetailsContainer(
+                  icon: Icon(
+                    Icons.list,
+                    size: 40,
+                    color: Color(0xFF5F5F5F),
+                  ),
+                  title: 'My Listings',
+                  subtitle: 'View your products listing for sales',
+                  route: Routes.myListing,
+                ),
+                SizedBox(height: 20.0),
+                AccountDetailsContainer(
+                  icon: Icon(
+                    Icons.favorite_border,
+                    size: 40,
+                    color: Color(0xFF5F5F5F),
+                  ),
+                  title: 'Liked Items',
+                  subtitle: 'See the products you have wishlisted',
+                  route: Routes.likedItems,
+                ),
+                SizedBox(height: 50.0), // Space between list and action buttons
                 ActionButtons(),
               ],
             ),
@@ -68,4 +88,3 @@ class _SideBarState extends State<SideBar> {
     );
   }
 }
-
