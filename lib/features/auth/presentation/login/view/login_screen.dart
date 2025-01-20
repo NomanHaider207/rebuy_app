@@ -39,7 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 30.0),
               TextOptionsDesc(text: "Login"),
               SizedBox(height: 20.0),
-              SocialLoginButtons(onGooglePressed: _onGooglePressed,onXPressed: (){}, onApplePressed: (){},),
+              SocialLoginButtons(onGooglePressed: _onGooglePressed,onXPressed: (){
+                Navigator.pushReplacementNamed(context, Routes.home);
+              }, onApplePressed: (){},),
               SizedBox(height: 50.0),
               DividerWithText(),
               SizedBox(height: 40.0),

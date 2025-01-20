@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rebuy/main.dart';
+import 'package:rebuy/components/custom_navbar.dart';
+import 'package:rebuy/features/explore/components/explore_product_card_view.dart';
 import '../../../components/headersection.dart';
 import '../../../components/search_bar.dart';
 import '../../../constants/assets.dart';
@@ -21,7 +21,37 @@ class _ExploreState extends State<Explore> {
     "Music",
     "Camera",
     "Mobiles",
-    "Appliances"
+    "Appliances",
+  ];
+
+  final List<Map<String, String>> products = [
+    {
+      "userName": "Noman Haider",
+      "bio": "Loves Guitar Music",
+      "avatarUrl": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg",
+      "productName": "Cordoba Mini Guitar",
+      "description": "Make: Cordoba | Year: 2020",
+      "productImage": Assets.product,
+      "price": "100,000 PKR"
+    },
+    {
+      "userName": "Ali Khan",
+      "bio": "Tech Enthusiast",
+      "avatarUrl": "https://images.pexels.com/photos/48831/pexels-photo-48831.jpeg",
+      "productName": "Sony Mirrorless Camera",
+      "description": "Model: Alpha 7R III | Year: 2021",
+      "productImage": Assets.product,
+      "price": "250,000 PKR"
+    },
+    {
+      "userName": "Sara Ahmed",
+      "bio": "Music Lover",
+      "avatarUrl": "https://images.pexels.com/photos/1835826/pexels-photo-1835826.jpeg",
+      "productName": "Fender Stratocaster Guitar",
+      "description": "Make: Fender | Year: 2018",
+      "productImage": Assets.product,
+      "price": "320,000 PKR"
+    }
   ];
 
   @override
@@ -32,7 +62,7 @@ class _ExploreState extends State<Explore> {
       builder: (context, child) => Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(18.w, 67.h, 18.w, 0.0),
+            padding: EdgeInsets.fromLTRB(18.w, 100.h, 18.w, 0.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -70,152 +100,34 @@ class _ExploreState extends State<Explore> {
                     },
                   ),
                 ),
-                SizedBox(height: 20.h),
-                ProductCard(
-                  userName: "Noman Haider",
-                  bio: "Hello Ji",
-                  avatarUrl:
-                      'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
-                  productName: 'Cordoba Mini Guitar with a Very Long Name',
-                  description: 'Make: Cordoba | Year: 2020',
-                  productImage: Assets.product,
-                  price: '100,000 PKR',
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    final product = products[index];
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: 15.h),
+                      child: ExploreProductCardView(
+                        userName: product["userName"] ?? "",
+                        bio: product["bio"] ?? "",
+                        avatarUrl: product["avatarUrl"] ?? "",
+                        productName: product["productName"] ?? "",
+                        description: product["description"] ?? "",
+                        productImage: product["productImage"] ?? "",
+                        price: product["price"] ?? "",
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
           ),
         ),
+        bottomNavigationBar: CustomNavBarWithSvg(),
       ),
     );
   }
 }
 
-class ProductCard extends StatelessWidget {
-  final String userName;
-  final String bio;
-  final String avatarUrl;
-  final String productName;
-  final String description;
-  final String productImage;
-  final String price;
 
-  const ProductCard({
-    Key? key,
-    required this.userName,
-    required this.bio,
-    required this.avatarUrl,
-    required this.productName,
-    required this.description,
-    required this.productImage,
-    required this.price,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.w, 10.h, 20.w, 5.h),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 25.h,
-                  backgroundImage: NetworkImage(avatarUrl),
-                ),
-                SizedBox(width: 8.w),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        userName,
-                        style: GoogleFonts.firaSans(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.sp,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        bio,
-                        style: GoogleFonts.firaSans(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 13.sp,
-                          color: const Color(0xFF747474),
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: SvgPicture.asset(
-                    Assets.optionIcon,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Image.asset(
-            productImage,
-            height: 298.h,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 10.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          productName,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.firaSans(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18.sp,
-                          ),
-                        ),
-                        Text(
-                          description,
-                          style: GoogleFonts.firaSans(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13.sp,
-                            color: const Color(0xFF747474),
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ]),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Text(
-                    price,
-                    style: GoogleFonts.firaSans(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18.sp,
-                      color: Colors.green,
-                    ),
-                    textAlign: TextAlign.right,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
