@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rebuy/services/authservices.dart';
 import '../../../../../constants/assets.dart';
 import '../../../constants/routes.dart';
 import '../components/conatinerforfields.dart';
@@ -14,6 +15,7 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
+  final AuthService authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +81,18 @@ class _SideBarState extends State<SideBar> {
                   route: Routes.likedItems,
                 ),
                 SizedBox(height: 50.0), // Space between list and action buttons
-                ActionButtons(),
+                ActionButtons(onSignOutPressed: _signOut, onFeedbackPressed: () {},),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _signOut() async {
+    await authService.signOut();
+    Navigator.pushReplacementNamed(context, Routes.login);
+
   }
 }

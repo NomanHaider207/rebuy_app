@@ -9,6 +9,7 @@ import '../../../../../components/options_description.dart';
 import '../../../../../components/socialbuttons.dart';
 import '../../../../../components/submit_button.dart';
 import '../../../../../components/title.dart';
+import 'package:rebuy/services/authservices.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService authService = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -25,36 +27,58 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(35.0, 64.0, 35.0, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeaderSection(),
-            SizedBox(height: 55.0),
-            PageTitle(text: 'Login'),
-            SizedBox(height: 30.0),
-            TextOptionsDesc(text: "Login"),
-            SizedBox(height: 20.0),
-            SocialLoginButtons(),
-            SizedBox(height: 50.0),
-            DividerWithText(),
-            SizedBox(height: 40.0),
-            FormFields(
-              fields: [
-                {'hintText': 'Email', 'keyboardType': TextInputType.emailAddress},
-                {'hintText': 'Password', 'obscureText': true},
-              ],
-              controllers: [_emailController, _passwordController],
-            ),
-            SizedBox(height: 30.0),
-            SubmitButton(buttonText: 'Login'),
-            SizedBox(height: 20.0),
-            FooterSection(descriptionText: "Don't have an acccount?", buttonText: " SignUp", route: Routes.signUp,),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(35.0, 64.0, 35.0, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderSection(),
+              SizedBox(height: 55.0),
+              PageTitle(text: 'Login'),
+              SizedBox(height: 30.0),
+              TextOptionsDesc(text: "Login"),
+              SizedBox(height: 20.0),
+              SocialLoginButtons(onGooglePressed: _onGooglePressed,onXPressed: (){}, onApplePressed: (){},),
+              SizedBox(height: 50.0),
+              DividerWithText(),
+              SizedBox(height: 40.0),
+              FormFields(
+                fields: [
+                  {'hintText': 'Email', 'keyboardType': TextInputType.emailAddress},
+                  {'hintText': 'Password', 'obscureText': true},
+                ],
+                controllers: [_emailController, _passwordController],
+              ),
+              SizedBox(height: 30.0),
+              SubmitButton(buttonText: 'Login', onPressed: _login,),
+              SizedBox(height: 20.0),
+              FooterSection(descriptionText: "Don't have an acccount?", buttonText: " SignUp", route: Routes.signUp,),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  _login() async {
+    final user = await authService.loginWithEmailAndPassword(_emailController.text, _passwordController.text);
+    if(user != null){
+      Navigator.pushReplacementNamed(context, Routes.home);
+    }
+    else{
+      print("[Login] : Login Failed");
+    }
+  }
+
+  void _onGooglePressed() async {
+   final user = await authService.signInWithGoogle();
+   if(user != null){
+     Navigator.pushReplacementNamed(context, Routes.home);
+   }
+   else{
+     print("[Login] : Login Failed with google");
+   }
   }
 }
 

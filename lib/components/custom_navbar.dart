@@ -21,7 +21,7 @@ class _CustomNavBarWithSvgState extends State<CustomNavBarWithSvg> {
 
   final List<String> routes = [
     Routes.home,       // Home Screen route
-    Routes.myListing,
+    Routes.exploreScreen,
     Routes.cameraScreen,
     Routes.likedItems,
     Routes.chatScreen,// Discover/Explore screen route

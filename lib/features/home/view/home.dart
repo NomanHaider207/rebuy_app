@@ -6,7 +6,7 @@ import '../../../../../constants/routes.dart';
 import '../components/list_builder.dart';
 import '../components/profile_header.dart';
 import '../components/section_header.dart';
-import '../components/search_bar.dart';
+import '../../../components/search_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

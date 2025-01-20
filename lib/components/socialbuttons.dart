@@ -3,14 +3,34 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rebuy/constants/assets.dart';
 
 class SocialLoginButtons extends StatelessWidget {
+  final VoidCallback onGooglePressed;
+  final VoidCallback onXPressed;
+  final VoidCallback onApplePressed;
+
+  const SocialLoginButtons({
+    Key? key,
+    required this.onGooglePressed,
+    required this.onXPressed,
+    required this.onApplePressed,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SocialLoginButton(asset: Assets.googleLogo),
-        SocialLoginButton(asset: Assets.xLogo),
-        SocialLoginButton(asset: Assets.appleLogo),
+        SocialLoginButton(
+          asset: Assets.googleLogo,
+          onPressed: onGooglePressed,
+        ),
+        SocialLoginButton(
+          asset: Assets.xLogo,
+          onPressed: onXPressed,
+        ),
+        SocialLoginButton(
+          asset: Assets.appleLogo,
+          onPressed: onApplePressed,
+        ),
       ],
     );
   }
@@ -18,14 +38,17 @@ class SocialLoginButtons extends StatelessWidget {
 
 class SocialLoginButton extends StatelessWidget {
   final String asset;
-  const SocialLoginButton({required this.asset});
+  final VoidCallback onPressed;
+
+  const SocialLoginButton({
+    required this.asset,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Social login logic
-      },
+      onTap: onPressed, // Call the provided onPressed callback
       child: Container(
         width: 105.0,
         height: 57.0,

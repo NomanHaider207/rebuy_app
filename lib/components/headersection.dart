@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../constants/assets.dart';
-import '../../../constants/routes.dart';
+import '../constants/assets.dart';
+import '../constants/routes.dart';
 
 class HeaderSectionForTitles extends StatefulWidget {
   final String? route;
@@ -38,9 +40,8 @@ class _HeaderSectionForTitlesState extends State<HeaderSectionForTitles> {
           ),
           Text(
             widget.title,
-            style: TextStyle(
+            style: GoogleFonts.firaSans(
               fontSize: 32.0,
-              fontFamily: 'Dosis',
               fontWeight: FontWeight.w700,
               color: Color(0xFF3C3C3C),
             ),

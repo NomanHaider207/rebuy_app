@@ -4,25 +4,20 @@ import 'constants/routes.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); // Ensures Flutter environment is ready
   await Firebase.initializeApp(
-    // name: "Nature Rangers",
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform, // Links platform-specific config
   );
-  runApp(new MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-        title: 'ReBuy App',
-        initialRoute: Routes.splash,
-        routes: Routes.getRoutes(),
+      title: 'ReBuy App',
+      initialRoute: Routes.splash,
+      routes: Routes.getRoutes(),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../components/custom_navbar.dart';
 import '../../../constants/assets.dart';
-import '../../mylikeditems/components/headersection.dart';
+import '../../../components/headersection.dart';
 import '../components/cardviewforlistingitems.dart';
 
 class MyListing extends StatefulWidget {

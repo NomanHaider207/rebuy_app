@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rebuy/components/custom_navbar.dart';
 
 import '../../../constants/assets.dart';
-import '../components/headersection.dart';
+import '../../../components/headersection.dart';
 import '../components/cardviewforitems.dart';
 
 class MyLikedItems extends StatefulWidget {

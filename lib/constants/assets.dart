@@ -20,6 +20,7 @@ class Assets{
   static const String cameraIcon = "assets/images/camera_icon.svg";
 
   static const String wave = "assets/images/waves.png";
+  static const String optionIcon = "assets/images/options.svg";
 
 
 

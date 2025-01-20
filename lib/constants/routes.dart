@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:rebuy/features/camera/view/camera.dart';
+import 'package:rebuy/features/explore/view/explore.dart';
 import 'package:rebuy/features/messages/view/chat.dart';
 import 'package:rebuy/features/mylikeditems/view/mylikeditems.dart';
 import 'package:rebuy/features/mylisting/view/mylisting.dart';
@@ -25,6 +26,7 @@ class Routes {
   static const String myListing = '/mylisting';
   static const String cameraScreen = '/camera';
   static const String chatScreen = '/messages';
+  static const String exploreScreen = '/explore';
 
 
 
@@ -43,6 +45,7 @@ class Routes {
       myListing: (context) => MyListing(),
       chatScreen: (context) => ChatScreen(),
       cameraScreen: (context) => CameraScreen(),
+      exploreScreen: (context) => Explore(),
 
     };
   }
