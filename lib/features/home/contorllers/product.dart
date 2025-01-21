@@ -30,7 +30,6 @@ class Product {
     );
   }
 
-  // Optional: Convert Product to Map if you want to save to Firestore
   Map<String, dynamic> toMap() {
     return {
       'id': id,
