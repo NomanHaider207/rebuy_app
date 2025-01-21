@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rebuy/components/custom_navbar.dart';
 
 import '../../../constants/assets.dart';
@@ -51,7 +52,7 @@ class _MyLikedItemsState extends State<MyOrders> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(35, 60, 35, 0.0),
+        padding: EdgeInsets.fromLTRB(10.w, 70.h, 18.w, 0.0),
         child: Column(
           children: [
             HeaderSectionForTitles(title: "My Orders"),
@@ -61,12 +62,12 @@ class _MyLikedItemsState extends State<MyOrders> {
                 itemBuilder: (context, index) {
                   final item = items[index];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    padding: EdgeInsets.symmetric(vertical: 6.h),
                     child: CardViewForOrderItems(
                       image: Image.asset(
                         item["image"]!,
-                        width: 90.0, // Adjust size as needed
-                        height: 90.0,
+                        width: 90.w, // Adjust size as needed
+                        height: 90.h,
                         fit: BoxFit.cover,
                       ),
                       title: item["title"]!,

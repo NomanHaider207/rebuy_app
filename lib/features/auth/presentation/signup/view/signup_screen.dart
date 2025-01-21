@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rebuy/constants/routes.dart';
-import 'package:rebuy/services/authservices.dart';
+import 'package:rebuy/features/auth/presentation/signup/contoller/user/user_mode.dart';
 import '../../../../../components/divider.dart';
 import '../../../../../components/footer_section.dart';
 import '../../../../../components/form_fields.dart';
@@ -9,6 +11,7 @@ import '../../../../../components/options_description.dart';
 import '../../../../../components/socialbuttons.dart';
 import '../../../../../components/submit_button.dart';
 import '../../../../../components/title.dart';
+import '../../../services/authservices.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -63,14 +66,41 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   _signUp() async {
-    final user = await authService.createUserWithEmailAndPassword(_emailController.text, _passwordController.text);
-    if(user != null){
+    try {
+      // Step 1: Create a new user with Firebase Authentication
+      final credentials = await authService.createUserWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+
+      if (credentials == null || credentials.uid == null) {
+        throw Exception("User creation failed in Firebase Authentication");
+      }
+
+      final uid = credentials.uid;
+      final userDocumentRef =
+      FirebaseFirestore.instance.collection('users').doc(uid);
+      final appUser = AppUser(
+        uid: uid,
+        email: _emailController.text.trim(),
+        name: _nameController.text.trim(),
+      );
+      await userDocumentRef.set(appUser.toFirestore());
       Navigator.pushReplacementNamed(context, Routes.home);
-    }
-    else{
-      print("[Sign- Up] : Error while creating user");
+    } catch (e) {
+      print("[Sign-Up Error]: $e");
+      try {
+        final currentUser = FirebaseAuth.instance.currentUser;
+        await currentUser?.delete();
+      } catch (authError) {
+        print("[Firebase Auth Cleanup Error]: $authError");
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Signup failed. Please try again.")),
+      );
     }
   }
+
 
   void _onGooglePressed() async {
    final user = await authService.signInWithGoogle();

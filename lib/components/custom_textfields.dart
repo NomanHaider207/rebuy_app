@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -25,10 +26,10 @@ class CustomTextField extends StatelessWidget {
         filled: true,
         fillColor: Color(0xFFDEDEDE),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(20.h),
           borderSide: BorderSide.none,
         ),
-        contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+        contentPadding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
       ),
       keyboardType: keyboardType,
     );

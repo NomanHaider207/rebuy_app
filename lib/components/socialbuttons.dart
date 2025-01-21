@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rebuy/constants/assets.dart';
 
@@ -17,20 +18,23 @@ class SocialLoginButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SocialLoginButton(
+        Expanded(child: SocialLoginButton(
           asset: Assets.googleLogo,
           onPressed: onGooglePressed,
-        ),
-        SocialLoginButton(
+        ),),
+        SizedBox(width: 12.w,),
+        Expanded(child: SocialLoginButton(
           asset: Assets.xLogo,
           onPressed: onXPressed,
         ),
-        SocialLoginButton(
+        ),
+        SizedBox(width: 12.w,),
+        Expanded(child: SocialLoginButton(
           asset: Assets.appleLogo,
           onPressed: onApplePressed,
-        ),
+        ),),
       ],
     );
   }
@@ -50,17 +54,18 @@ class SocialLoginButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed, // Call the provided onPressed callback
       child: Container(
-        width: 105.0,
-        height: 57.0,
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
+        // width: double.maxFinite,
+        // height: 57.h,
         decoration: BoxDecoration(
           color: Color(0xFFDEDEDE),
-          borderRadius: BorderRadius.circular(25.0),
+          borderRadius: BorderRadius.circular(25.h),
         ),
         child: Center(
           child: SvgPicture.asset(
             asset,
-            width: 28.0,
-            height: 28.0,
+            width: 20.w,
+            height: 20.h,
           ),
         ),
       ),

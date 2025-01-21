@@ -62,7 +62,7 @@ class _ExploreState extends State<Explore> {
       builder: (context, child) => Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(18.w, 100.h, 18.w, 0.0),
+            padding: EdgeInsets.fromLTRB(18.w, 70.h, 18.w, 0.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

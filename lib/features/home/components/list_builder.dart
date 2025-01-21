@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rebuy/features/home/components/product_card.dart';
 
+import '../../../constants/assets.dart';
+import '../contorllers/product.dart'; // Import Product Model
+
 class ProductListView extends StatelessWidget {
-  final List<Map<String, dynamic>> products;
+  final List<Product> products; // List of Product objects
 
   const ProductListView({required this.products, Key? key}) : super(key: key);
 
@@ -15,16 +18,17 @@ class ProductListView extends StatelessWidget {
         itemCount: products.length,
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
-          final product = products[index];
+          final product = products[index]; // Fetch product object
+
           return Container(
             margin: const EdgeInsets.only(right: 10.0),
             color: Colors.transparent,
             child: ProductCard(
-              imageUrl: product['imageUrl'],
-              title: product['title'],
-              subtitle: product['subtitle'],
-              price: product['price'],
-              isFavorite: product['isFavorite'],
+              imageUrl: Assets.product, // You can use a default image if `imageUrl` is null
+              title: product.name,  // Use name property of the product
+              subtitle: '${product.modelYear} | ${product.company}', // Display model year and company as subtitle
+              price: '\$${product.price}', // Display price with '$' sign
+              isFavorite: product.isFavorite,  // Pass the favorite status
             ),
           );
         },

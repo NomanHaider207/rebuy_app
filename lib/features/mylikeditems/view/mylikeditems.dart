@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rebuy/components/custom_navbar.dart';
 
 import '../../../constants/assets.dart';
@@ -64,7 +65,7 @@ class _MyLikedItemsState extends State<MyLikedItems> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(35, 64, 35, 0.0),
+        padding: EdgeInsets.fromLTRB(10.w, 70.h, 18.w, 0.0),
         child: Column(
           children: [
             HeaderSectionForTitles(title: "Liked Items"),
@@ -74,12 +75,12 @@ class _MyLikedItemsState extends State<MyLikedItems> {
                 itemBuilder: (context, index) {
                   final item = items[index];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    padding: EdgeInsets.symmetric(vertical: 6.h),
                     child: CardViewForItems(
                       image: Image.asset(
                         item["image"]!,
-                        width: 110.0, // Adjust size as needed
-                        height: 110.0,
+                        width: 110.w, // Adjust size as needed
+                        height: 110.h,
                         fit: BoxFit.cover,
 
                       ),

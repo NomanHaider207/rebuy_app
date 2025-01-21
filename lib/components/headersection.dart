@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,10 +22,10 @@ class _HeaderSectionForTitlesState extends State<HeaderSectionForTitles> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 30.0),
+      padding: EdgeInsets.only(bottom: 30.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // Back Button
           GestureDetector(
             onTap: () {
               if (widget.route != null) {
@@ -34,29 +35,36 @@ class _HeaderSectionForTitlesState extends State<HeaderSectionForTitles> {
             child: SvgPicture.asset(
               Assets.backButton,
               fit: BoxFit.cover,
-              width: 46.0,
-              height: 46.0,
+              width: 40.w,
+              height: 40.h,
             ),
           ),
+
+          // Small gap between back button and title
+          SizedBox(width: 15.w),
+
+          // Title
           Text(
             widget.title,
             style: GoogleFonts.firaSans(
-              fontSize: 32.0,
+              fontSize: 32.sp,
               fontWeight: FontWeight.w700,
-              color: Color(0xFF3C3C3C),
+              color: const Color(0xFF3C3C3C),
             ),
           ),
-          SizedBox(
-            width: 60.0,
-          ),
+
+          // Spacer pushes the hamburger to the far-right
+          const Spacer(),
+
+          // Hamburger Icon
           GestureDetector(
             onTap: () {
               Navigator.pushReplacementNamed(context, Routes.sideBar);
             },
             child: SvgPicture.asset(
               Assets.hamburger,
-              width: 33.0,
-              height: 33.0,
+              width: 23.w,
+              height: 23.h,
             ),
           ),
         ],

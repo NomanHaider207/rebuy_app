@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FooterSection extends StatelessWidget {
   final String descriptionText;
@@ -17,7 +18,7 @@ class FooterSection extends StatelessWidget {
           Text(
             "$descriptionText",
             style: TextStyle(
-              fontSize: 18.0,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w400,
               color: Color(0xFF828282),
             ),
@@ -31,7 +32,7 @@ class FooterSection extends StatelessWidget {
             child: Text(
               '$buttonText',
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFFFF5A5F),
               ),

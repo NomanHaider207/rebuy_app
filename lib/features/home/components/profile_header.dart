@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,50 +24,53 @@ class ProfileHeader extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 45,
+          radius: 45.r,
           backgroundImage: NetworkImage(imageUrl),
         ),
-        const SizedBox(width: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 210.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    username,
-                    softWrap: true,
-                    style: GoogleFonts.firaSans(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w700,
+        SizedBox(width: 10.w),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      username,
+                      softWrap: true,
+                      style: GoogleFonts.firaSans(
+                        fontSize: 28.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      overflow: TextOverflow.ellipsis,  // Adds the ellipsis (...) when the text overflows
+                      maxLines: 1,
                     ),
-                    overflow: TextOverflow.ellipsis,  // Adds the ellipsis (...) when the text overflows
-                    maxLines: 1,
-                  ),
-                  Text(
-                    welcomeText,
-                    style: GoogleFonts.firaSans(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xFFFF5A5F),
+                    Text(
+                      welcomeText,
+                      style: GoogleFonts.firaSans(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xFFFF5A5F),
+                      ),
                     ),
+                  ],
+                ),
+              ),
+              Flexible(
+                flex: 0,
+                child: GestureDetector(
+                  onTap: onHamburgerTap,
+                  child: SvgPicture.asset(
+                    Assets.hamburger,
+                    width: 23.w,
+                    height: 23.h,
                   ),
-                ],
+                ),
               ),
-            ),
-            SizedBox(width: 25.0,),
-            GestureDetector(
-              onTap: onHamburgerTap,
-              child: SvgPicture.asset(
-                Assets.hamburger,
-                width: 33.0,
-                height: 33.0,
-              ),
-            ),
-          ],
+            ],
+          ),
         )
       ],
     );

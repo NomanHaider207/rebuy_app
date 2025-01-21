@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageTitle extends StatelessWidget {
   final String text; // Required parameter
@@ -12,7 +13,7 @@ class PageTitle extends StatelessWidget {
       text, // Use the provided text parameter
       textAlign: TextAlign.left,
       style: TextStyle(
-        fontSize: 48.0,
+        fontSize: 48.sp,
         fontWeight: FontWeight.w800,
         fontFamily: 'Dosis',
         color: Color(0xFF3C3C3C),

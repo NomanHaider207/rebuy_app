@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -11,7 +12,7 @@ class CustomSearchBar extends StatelessWidget {
       decoration: InputDecoration(
         hintText: 'Search for books, guitars and more...',
         hintStyle: GoogleFonts.cairo(
-          fontSize: 18.0,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w400,
           color: const Color(0xFF828282),
         ),
@@ -24,11 +25,11 @@ class CustomSearchBar extends StatelessWidget {
         fillColor: const Color(0xFFDEDEDE),
         border: InputBorder.none,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(22.0),
+          borderRadius: BorderRadius.circular(22.h),
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(20.h),
           borderSide: BorderSide.none,
         ),
       ),

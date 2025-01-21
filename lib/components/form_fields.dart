@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'custom_textfields.dart';
 
@@ -21,7 +22,7 @@ class FormFields extends StatelessWidget {
 
         return Padding(
           padding:
-              EdgeInsets.only(bottom: index == fields.length - 1 ? 0.0 : 20.0),
+              EdgeInsets.only(bottom: index == fields.length - 1 ? 0.0 : 20.h),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [CustomTextField(
               controller: controller,

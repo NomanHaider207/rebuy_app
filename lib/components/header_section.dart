@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rebuy/constants/assets.dart';
 
@@ -22,14 +23,14 @@ class HeaderSection extends StatelessWidget {
           child: SvgPicture.asset(
             Assets.backButton,
             fit: BoxFit.cover,
-            width: 46.0,
-            height: 46.0,
+            width: 46.w,
+            height: 46.h,
           ),
         ),
         Text(
           'ReBuy',
           style: TextStyle(
-            fontSize: 32.0,
+            fontSize: 32.sp,
             fontFamily: 'Dosis',
             fontWeight: FontWeight.w800,
             color: Color(0xFF3C3C3C),

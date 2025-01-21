@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DividerWithText extends StatelessWidget {
   @override
@@ -7,16 +8,16 @@ class DividerWithText extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Divider(
-          height: 20.0,
+          height: 20.h,
           color: Colors.black,
         ),
         Container(
-          color: Colors.white, // This ensures the divider line is hidden behind the "or" text
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Text(
             'or',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               color: Colors.black,
             ),

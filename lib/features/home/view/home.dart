@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rebuy/components/custom_navbar.dart';
-
 import '../../../../../constants/assets.dart';
 import '../../../../../constants/routes.dart';
+import '../../auth/presentation/signup/contoller/user/user_mode.dart';
 import '../components/list_builder.dart';
 import '../components/profile_header.dart';
 import '../components/section_header.dart';
 import '../../../components/search_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../contorllers/firestore_services.dart';
+import '../contorllers/product.dart';
+import '../contorllers/productservice.dart'; // Import product service
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,23 +20,46 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String? userName;
+  List<Product> products = [];  // To store the products
 
-  final List<Map<String, dynamic>> products = [
-    {
-      'imageUrl': Assets.product,
-      'title': 'Noman',
-      'subtitle': '2018 | Funskool',
-      'price': '\$890',
-      'isFavorite': true,
-    },
-    {
-      'imageUrl': Assets.product,
-      'title': 'Another',
-      'subtitle': '2020 | Company',
-      'price': '\$150',
-      'isFavorite': false,
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+    fetchProducts();
+  }
+
+  // Fetch user data
+  Future<void> _fetchUserData() async {
+    String? uid = FirebaseAuth.instance.currentUser?.uid;
+
+    if (uid != null) {
+      AppUser? user = await AppUserData().getUserData(uid);
+
+      if (user != null) {
+        setState(() {
+          userName = user.name;
+        });
+      } else {
+        print("User not found in Firestore.");
+      }
+    }
+  }
+
+  // Fetch products from Firestore
+  Future<void> fetchProducts() async {
+    ProductService firestoreService = ProductService();
+    List<Product> fetchedProducts = await firestoreService.fetchProducts();
+    setState(() {
+      products = fetchedProducts;
+    });
+  }
+
+  // Add products when user signs up
+  Future<void> _addProductsOnSignUp() async {
+    await ProductService().addProducts();  // Add 10 sample products
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +70,11 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               ProfileHeader(
-                imageUrl:
-                'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
-                username: 'Hey Haider',
+                imageUrl: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
+                username: userName ?? 'Loading...',
                 welcomeText: 'Welcome Back!',
                 onHamburgerTap: () {
-                  Navigator.pushReplacementNamed(context,Routes.sideBar);
+                  Navigator.pushReplacementNamed(context, Routes.sideBar);
                 },
               ),
               const SizedBox(height: 25),

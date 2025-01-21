@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextOptionsDesc extends StatefulWidget {
   final String text;
@@ -15,7 +16,7 @@ class _TextOptionsDescState extends State<TextOptionsDesc> {
       '${widget.text} using one of the following options',  // Use widget.text to access the property
       textAlign: TextAlign.left,
       style: TextStyle(
-        fontSize: 14.0,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
         color: Color(0xFF828282),
       ),

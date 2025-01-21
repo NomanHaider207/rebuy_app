@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rebuy/constants/routes.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -17,21 +18,21 @@ class SubmitButton extends StatelessWidget {
       onTap: onPressed, // Uses the passed method
       child: Container(
         width: double.infinity,
-        height: 56.0,
+        height: 56.h,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFFFF5A5F), Color(0xFFC1839F)],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(20.h),
         ),
         child: Center(
           child: Text(
             buttonText, // No need to use interpolation for this
             style: TextStyle(
               color: Colors.white,
-              fontSize: 18.0,
+              fontSize: 18.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
